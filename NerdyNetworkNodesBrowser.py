@@ -1,4 +1,5 @@
 import sys
+from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtWebEngineWidgets import *
@@ -24,11 +25,13 @@ class MainWindow(QMainWindow):
         forth_btn.triggered.connect(self.Browser.forward)
         navbar.addAction(forth_btn)
 
-        reload_btn = QAction('↻', self)
+        reload_icon = QMovie("reload_btn_icon.gif")
+        reload_btn = QAction(reload_icon, 'Reload', self)
         reload_btn.triggered.connect(self.Browser.reload)
         navbar.addAction(reload_btn)
 
-        home_btn = QAction('⌂', self)
+        home_icon = QIcon("home_btn_icon.png")
+        home_btn = QAction(home_icon, 'Home', self)
         home_btn.triggered.connect(self.navigate_home)
         navbar.addAction(home_btn)
         
@@ -39,7 +42,7 @@ class MainWindow(QMainWindow):
         self.Browser.urlChanged.connect(self.update_url)
 
     def navigate_home(self):
-        self.Browser.setUrl(Qurl('http://google.com'))
+        self.Browser.setUrl(QUrl('http://google.com'))
 
     def navigate_to_url(self):
         url = self.url_bar.text()
