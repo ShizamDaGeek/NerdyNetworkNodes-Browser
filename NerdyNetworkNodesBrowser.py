@@ -17,21 +17,23 @@ class MainWindow(QMainWindow):
         navbar = QToolBar()
         self.addToolBar(navbar)
 
-        back_btn = QAction('<', self)
+        back_icon =QIcon("backward_btn_icon.png")
+        back_btn = QAction(back_icon, "Backward", self)
         back_btn.triggered.connect(self.Browser.back)
         navbar.addAction(back_btn)
 
-        forth_btn = QAction('>', self)
-        forth_btn.triggered.connect(self.Browser.forward)
-        navbar.addAction(forth_btn)
+        forward_icon = QIcon("forward_btn_icon.png")
+        forward_btn = QAction(forward_icon, "Forward", self)
+        forward_btn.triggered.connect(self.Browser.forward)
+        navbar.addAction(forward_btn)
 
-        reload_icon = QMovie("reload_btn_icon.gif")
-        reload_btn = QAction(reload_icon, 'Reload', self)
+        reload_gif = QIcon("reload_btn_icon.gif")
+        reload_btn = QAction(reload_gif, "Reload", self)
         reload_btn.triggered.connect(self.Browser.reload)
         navbar.addAction(reload_btn)
 
-        home_icon = QIcon("home_btn_icon.png")
-        home_btn = QAction(home_icon, 'Home', self)
+        home_icon = QIcon("home-btn_icon.png")
+        home_btn = QAction(home_icon, "Home", self)
         home_btn.triggered.connect(self.navigate_home)
         navbar.addAction(home_btn)
         
